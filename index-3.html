@@ -1,0 +1,1219 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+<title>Desi Bazar | Wholesale होलसेल बाजार</title>
+<meta name="description" content="Desi Bazar - All India Wholesale Market. Min 10kg. Buy & Sell Makhana, Aam, Lichi, Machli, Chai, Kali Mirch and more at wholesale rates.">
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap');
+
+:root {
+  --orange: #FF6B00;
+  --orange-dark: #cc2200;
+  --orange-glow: rgba(255,107,0,0.25);
+  --bg: #0a0a0a;
+  --card: #161616;
+  --card2: #1e1e1e;
+  --border: #2a2a2a;
+  --text: #ffffff;
+  --text-muted: rgba(255,255,255,0.45);
+  --text-dim: rgba(255,255,255,0.18);
+  --green: #00CC55;
+  --blue: #00AAFF;
+  --yellow: #FFB400;
+  --red: #ff4466;
+}
+
+* { margin:0; padding:0; box-sizing:border-box; -webkit-tap-highlight-color:transparent; }
+
+body {
+  font-family: 'Inter', Arial, sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  min-height: 100vh;
+  max-width: 480px;
+  margin: 0 auto;
+  overflow-x: hidden;
+}
+
+/* Animations */
+@keyframes fadeUp { from{opacity:0;transform:translateY(16px)} to{opacity:1;transform:translateY(0)} }
+@keyframes fadeIn { from{opacity:0} to{opacity:1} }
+@keyframes pop { 0%{transform:scale(1)} 40%{transform:scale(1.12)} 100%{transform:scale(1)} }
+@keyframes pulse { 0%,100%{box-shadow:0 0 0 0 var(--orange-glow)} 50%{box-shadow:0 0 0 10px transparent} }
+
+/* Header */
+.header {
+  background: linear-gradient(180deg,#130600,#0d0400);
+  padding: 12px 14px 10px;
+  border-bottom: 1.5px solid rgba(255,107,0,0.3);
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+.header-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 10px;
+}
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.logo-icon {
+  width: 36px;
+  height: 36px;
+  border-radius: 10px;
+  background: linear-gradient(135deg,var(--orange),var(--orange-dark));
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 18px;
+  box-shadow: 0 0 14px var(--orange-glow);
+}
+.logo-text {
+  font-size: 18px;
+  font-weight: 900;
+  letter-spacing: 1px;
+}
+.logo-text span { color: var(--orange); }
+.wholesale-badge {
+  background: linear-gradient(135deg,#1a3a1a,#0d2a0d);
+  border: 1px solid rgba(0,204,85,0.4);
+  color: var(--green);
+  font-size: 9px;
+  font-weight: 800;
+  padding: 3px 8px;
+  border-radius: 20px;
+  letter-spacing: 0.5px;
+}
+
+/* Nav */
+.nav {
+  display: flex;
+  background: #0f0f0f;
+  border-bottom: 1px solid var(--border);
+  position: sticky;
+  top: 68px;
+  z-index: 99;
+}
+.nav-tab {
+  flex: 1;
+  padding: 9px 2px;
+  text-align: center;
+  font-size: 10px;
+  font-weight: 700;
+  color: var(--text-muted);
+  cursor: pointer;
+  border-bottom: 2.5px solid transparent;
+  transition: all 0.2s;
+}
+.nav-tab.active {
+  color: var(--orange);
+  border-bottom-color: var(--orange);
+}
+.nav-tab .ni {
+  font-size: 18px;
+  display: block;
+  margin-bottom: 2px;
+}
+
+/* Pages */
+.page { display: none; padding: 14px 14px 90px; }
+.page.active { display: block; animation: fadeUp 0.3s ease; }
+
+/* Banner */
+.banner {
+  background: linear-gradient(135deg,#1c0800 0%,#3d1200 60%,#FF6B00 200%);
+  border-radius: 16px;
+  padding: 18px 16px;
+  margin-bottom: 16px;
+  position: relative;
+  overflow: hidden;
+  border: 1px solid rgba(255,107,0,0.25);
+}
+.banner::after {
+  content: '🏪';
+  position: absolute;
+  right: 14px;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 52px;
+  opacity: 0.12;
+}
+.banner h2 {
+  font-size: 20px;
+  font-weight: 900;
+  line-height: 1.25;
+  position: relative;
+}
+.banner p {
+  font-size: 12px;
+  color: rgba(255,255,255,0.65);
+  margin-top: 5px;
+  position: relative;
+}
+.banner-tags {
+  display: flex;
+  gap: 6px;
+  margin-top: 12px;
+  flex-wrap: wrap;
+  position: relative;
+}
+.banner-tag {
+  background: rgba(255,255,255,0.12);
+  border: 1px solid rgba(255,255,255,0.2);
+  color: #fff;
+  font-size: 10px;
+  font-weight: 700;
+  padding: 4px 10px;
+  border-radius: 20px;
+}
+
+/* Section */
+.sec-title {
+  font-size: 14px;
+  font-weight: 900;
+  margin-bottom: 12px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.sec-sub {
+  font-size: 11px;
+  color: var(--text-muted);
+  font-weight: 500;
+}
+
+/* Product Grid */
+.prod-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 11px;
+  margin-bottom: 18px;
+}
+.prod-card {
+  background: var(--card);
+  border-radius: 14px;
+  overflow: hidden;
+  border: 1px solid var(--border);
+  transition: transform 0.2s, border-color 0.2s;
+}
+.prod-card:active { transform: scale(0.97); }
+.prod-img {
+  height: 100px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 48px;
+  background: linear-gradient(135deg,#1a1a1a,#242424);
+  position: relative;
+}
+.moq-badge {
+  position: absolute;
+  top: 7px;
+  left: 7px;
+  background: var(--green);
+  color: #000;
+  font-size: 8px;
+  font-weight: 900;
+  padding: 3px 7px;
+  border-radius: 8px;
+}
+.prod-body { padding: 10px; }
+.prod-name {
+  font-size: 13px;
+  font-weight: 800;
+  margin-bottom: 2px;
+}
+.prod-desc {
+  font-size: 10px;
+  color: var(--text-muted);
+  margin-bottom: 8px;
+  line-height: 1.3;
+}
+.prod-actions {
+  display: flex;
+  gap: 6px;
+}
+.btn-buy, .btn-sell {
+  flex: 1;
+  border: none;
+  padding: 8px 4px;
+  border-radius: 9px;
+  font-size: 11px;
+  font-weight: 800;
+  cursor: pointer;
+  font-family: inherit;
+  transition: transform 0.15s;
+}
+.btn-buy {
+  background: linear-gradient(135deg,var(--orange),var(--orange-dark));
+  color: #fff;
+}
+.btn-sell {
+  background: rgba(0,204,85,0.12);
+  border: 1px solid rgba(0,204,85,0.35);
+  color: var(--green);
+}
+.btn-buy:active, .btn-sell:active { transform: scale(0.95); }
+
+/* Sell Form */
+.sell-card {
+  background: var(--card);
+  border-radius: 16px;
+  padding: 18px;
+  border: 1px solid var(--border);
+  margin-bottom: 16px;
+}
+.sell-card h3 {
+  font-size: 16px;
+  font-weight: 900;
+  margin-bottom: 4px;
+  color: var(--orange);
+}
+.sell-card .sub {
+  font-size: 11px;
+  color: var(--text-muted);
+  margin-bottom: 16px;
+}
+.form-field { margin-bottom: 13px; }
+.form-field label {
+  font-size: 10px;
+  color: var(--text-muted);
+  font-weight: 700;
+  letter-spacing: 0.8px;
+  display: block;
+  margin-bottom: 6px;
+}
+.form-field input, .form-field select, .form-field textarea {
+  width: 100%;
+  background: #0f0f0f;
+  border: 1.5px solid var(--border);
+  border-radius: 11px;
+  padding: 12px 14px;
+  color: var(--text);
+  font-size: 14px;
+  font-family: inherit;
+  outline: none;
+  transition: border-color 0.2s;
+}
+.form-field input:focus, .form-field select:focus, .form-field textarea:focus {
+  border-color: var(--orange);
+}
+.form-field select option { background: #111; }
+.form-field textarea { resize: none; height: 70px; }
+.two-col {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+}
+.submit-btn {
+  width: 100%;
+  background: linear-gradient(135deg,var(--orange),var(--orange-dark));
+  border: none;
+  color: #fff;
+  padding: 15px;
+  border-radius: 12px;
+  font-size: 15px;
+  font-weight: 900;
+  cursor: pointer;
+  font-family: inherit;
+  box-shadow: 0 6px 20px var(--orange-glow);
+  margin-top: 6px;
+  letter-spacing: 0.3px;
+}
+.submit-btn:active { transform: scale(0.97); }
+
+/* Info Cards */
+.info-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+  margin-bottom: 18px;
+}
+.info-card {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 14px 12px;
+  text-align: center;
+}
+.info-card .ic { font-size: 24px; margin-bottom: 6px; }
+.info-card .t { font-size: 12px; font-weight: 800; }
+.info-card .d { font-size: 10px; color: var(--text-muted); margin-top: 3px; }
+
+/* How it works */
+.step {
+  display: flex;
+  gap: 12px;
+  margin-bottom: 14px;
+  align-items: flex-start;
+}
+.step-num {
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  background: linear-gradient(135deg,var(--orange),var(--orange-dark));
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 12px;
+  font-weight: 900;
+  flex-shrink: 0;
+}
+.step-text h4 { font-size: 13px; font-weight: 800; margin-bottom: 2px; }
+.step-text p { font-size: 11px; color: var(--text-muted); line-height: 1.4; }
+
+/* Modal */
+.modal-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.75);
+  z-index: 1000;
+  display: none;
+  align-items: flex-end;
+  justify-content: center;
+  max-width: 480px;
+  margin: 0 auto;
+}
+.modal-overlay.show { display: flex; animation: fadeIn 0.2s ease; }
+.modal {
+  background: var(--card);
+  border-radius: 20px 20px 0 0;
+  padding: 22px 18px 30px;
+  width: 100%;
+  border-top: 1.5px solid rgba(255,107,0,0.3);
+  animation: fadeUp 0.3s ease;
+}
+.modal h3 {
+  font-size: 17px;
+  font-weight: 900;
+  margin-bottom: 4px;
+}
+.modal .sub {
+  font-size: 12px;
+  color: var(--text-muted);
+  margin-bottom: 16px;
+}
+.qty-row {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 14px;
+}
+.qty-btn {
+  width: 40px;
+  height: 40px;
+  border-radius: 10px;
+  background: #0f0f0f;
+  border: 1.5px solid var(--border);
+  color: var(--text);
+  font-size: 20px;
+  font-weight: 700;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.qty-input {
+  flex: 1;
+  text-align: center;
+  background: #0f0f0f;
+  border: 1.5px solid var(--border);
+  border-radius: 10px;
+  padding: 10px;
+  color: var(--text);
+  font-size: 18px;
+  font-weight: 900;
+  outline: none;
+}
+.qty-input:focus { border-color: var(--orange); }
+.moq-note {
+  font-size: 11px;
+  color: var(--green);
+  font-weight: 600;
+  margin-bottom: 14px;
+  text-align: center;
+}
+.wa-btn {
+  width: 100%;
+  background: #25D366;
+  border: none;
+  color: #fff;
+  padding: 15px;
+  border-radius: 12px;
+  font-size: 15px;
+  font-weight: 900;
+  cursor: pointer;
+  font-family: inherit;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  box-shadow: 0 4px 16px rgba(37,211,102,0.3);
+}
+.wa-btn:active { transform: scale(0.97); }
+.close-modal {
+  width: 100%;
+  background: transparent;
+  border: 1px solid var(--border);
+  color: var(--text-muted);
+  padding: 12px;
+  border-radius: 12px;
+  font-size: 13px;
+  font-weight: 700;
+  cursor: pointer;
+  font-family: inherit;
+  margin-top: 10px;
+}
+
+/* Toast */
+.toast {
+  position: fixed;
+  bottom: 90px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: #1e1e1e;
+  border: 1px solid rgba(255,107,0,0.35);
+  color: #fff;
+  padding: 11px 20px;
+  border-radius: 25px;
+  font-size: 12px;
+  font-weight: 700;
+  z-index: 9999;
+  white-space: nowrap;
+  display: none;
+  box-shadow: 0 6px 24px rgba(0,0,0,0.5);
+}
+.toast.show { display: block; animation: fadeUp 0.3s ease; }
+
+/* Footer note */
+.footer-note {
+  text-align: center;
+  padding: 20px 14px;
+  font-size: 11px;
+  color: var(--text-muted);
+  line-height: 1.5;
+}
+.footer-note strong { color: var(--orange); }
+
+/* Notification bell */
+.notif-bell {
+  position: relative;
+  width: 38px;
+  height: 38px;
+  border-radius: 10px;
+  background: #1a1a1a;
+  border: 1px solid rgba(255,107,0,0.3);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 17px;
+  cursor: pointer;
+  flex-shrink: 0;
+}
+.notif-bell.ring { animation: bellRing 0.5s ease; }
+@keyframes bellRing { 0%,100%{transform:rotate(0)} 20%{transform:rotate(-15deg)} 40%{transform:rotate(13deg)} 60%{transform:rotate(-8deg)} 80%{transform:rotate(5deg)} }
+.notif-badge {
+  position: absolute;
+  top: -4px;
+  right: -4px;
+  min-width: 16px;
+  height: 16px;
+  padding: 0 3px;
+  border-radius: 8px;
+  background: var(--red);
+  color: #fff;
+  font-size: 9px;
+  font-weight: 800;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  border: 1.5px solid var(--bg);
+}
+.notif-badge.show { display: flex; }
+.header-icons { display: flex; align-items: center; gap: 8px; }
+
+/* Notification panel */
+.notif-panel {
+  position: fixed;
+  top: 0; right: 0;
+  width: 88%;
+  max-width: 380px;
+  height: 100%;
+  background: #101010;
+  z-index: 300;
+  transform: translateX(100%);
+  transition: transform 0.28s ease;
+  display: flex;
+  flex-direction: column;
+  border-left: 1px solid var(--border);
+}
+.notif-panel.show { transform: translateX(0); }
+.notif-panel-overlay {
+  position: fixed; inset: 0;
+  background: rgba(0,0,0,0.55);
+  z-index: 299;
+  display: none;
+}
+.notif-panel-overlay.show { display: block; }
+.notif-panel-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 16px 14px;
+  border-bottom: 1px solid var(--border);
+}
+.notif-panel-head h3 { font-size: 15px; }
+.notif-clear { font-size: 11px; color: var(--text-muted); cursor: pointer; font-weight: 600; }
+.notif-close { font-size: 20px; color: var(--text-muted); cursor: pointer; padding: 2px 6px; }
+.notif-list { flex: 1; overflow-y: auto; padding: 10px; }
+.notif-item {
+  display: flex;
+  gap: 10px;
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 11px 12px;
+  margin-bottom: 8px;
+}
+.notif-item.unread { border-color: rgba(255,107,0,0.4); background: #1a1410; }
+.notif-icon { font-size: 18px; flex-shrink: 0; margin-top: 1px; }
+.notif-body { flex: 1; min-width: 0; }
+.notif-title { font-size: 12.5px; font-weight: 700; }
+.notif-text { font-size: 11.5px; color: var(--text-muted); margin-top: 2px; line-height: 1.4; }
+.notif-time { font-size: 10px; color: var(--text-dim); margin-top: 4px; }
+.notif-empty { text-align: center; color: var(--text-muted); font-size: 12.5px; padding: 40px 20px; }
+
+/* Profile page */
+.profile-head {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  padding: 16px;
+  margin-bottom: 16px;
+}
+.profile-avatar {
+  width: 56px; height: 56px;
+  border-radius: 50%;
+  background: linear-gradient(135deg,var(--orange),var(--orange-dark));
+  display: flex; align-items: center; justify-content: center;
+  font-size: 24px; font-weight: 800; color: #fff;
+  flex-shrink: 0;
+}
+.profile-head-name { font-size: 15px; font-weight: 800; }
+.profile-head-sub { font-size: 11.5px; color: var(--text-muted); margin-top: 2px; }
+.profile-stats {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 16px;
+}
+.pstat {
+  flex: 1;
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 12px 8px;
+  text-align: center;
+}
+.pstat .n { font-size: 18px; font-weight: 800; color: var(--orange); }
+.pstat .l { font-size: 10px; color: var(--text-muted); margin-top: 2px; }
+.history-item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 10px 12px;
+  margin-bottom: 8px;
+}
+.history-tag {
+  font-size: 10px;
+  font-weight: 800;
+  padding: 3px 8px;
+  border-radius: 6px;
+  flex-shrink: 0;
+}
+.history-tag.buy { background: rgba(0,170,255,0.15); color: var(--blue); }
+.history-tag.sell { background: rgba(0,204,85,0.15); color: var(--green); }
+.history-info { flex: 1; min-width: 0; }
+.history-name { font-size: 12.5px; font-weight: 700; }
+.history-meta { font-size: 10.5px; color: var(--text-muted); margin-top: 1px; }
+</style>
+</head>
+<body>
+
+<!-- HEADER -->
+<div class="header">
+  <div class="header-top">
+    <div class="logo">
+      <div class="logo-icon">🏪</div>
+      <div class="logo-text">DESI <span>BAZAR</span></div>
+    </div>
+    <div class="header-icons">
+      <div class="wholesale-badge">होलसेल • MIN 10KG</div>
+      <div class="notif-bell" id="notifBell" onclick="openNotifPanel()">
+        🔔
+        <span class="notif-badge" id="notifBadge">0</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- NAV -->
+<div class="nav">
+  <div class="nav-tab active" onclick="goTab('home')" id="nt_home"><span class="ni">🏠</span>Home</div>
+  <div class="nav-tab" onclick="goTab('buy')" id="nt_buy"><span class="ni">🛒</span>Buy</div>
+  <div class="nav-tab" onclick="goTab('sell')" id="nt_sell"><span class="ni">💰</span>Sell</div>
+  <div class="nav-tab" onclick="goTab('how')" id="nt_how"><span class="ni">❓</span>How</div>
+  <div class="nav-tab" onclick="goTab('profile')" id="nt_profile"><span class="ni">👤</span>Profile</div>
+</div>
+
+<!-- HOME PAGE -->
+<div class="page active" id="pg_home">
+  <div class="banner">
+    <h2>थोक भाव में<br>खरीदें & बेचें</h2>
+    <p>All India • 24×7 • Min 10 kg</p>
+    <div class="banner-tags">
+      <span class="banner-tag">📦 Min 10 kg</span>
+      <span class="banner-tag">🇮🇳 All India</span>
+      <span class="banner-tag">💬 Rate on WhatsApp</span>
+    </div>
+  </div>
+
+  <div class="info-grid">
+    <div class="info-card">
+      <div class="ic">📦</div>
+      <div class="t">Min 10 kg</div>
+      <div class="d">No upper limit</div>
+    </div>
+    <div class="info-card">
+      <div class="ic">💬</div>
+      <div class="t">WhatsApp Rate</div>
+      <div class="d">Direct deal</div>
+    </div>
+    <div class="info-card">
+      <div class="ic">🛒</div>
+      <div class="t">Buy Wholesale</div>
+      <div class="d">Best rates</div>
+    </div>
+    <div class="info-card">
+      <div class="ic">💰</div>
+      <div class="t">Sell Your Stock</div>
+      <div class="d">Get better price</div>
+    </div>
+  </div>
+
+  <div class="sec-title">
+    Popular Products
+    <span class="sec-sub">थोक में उपलब्ध</span>
+  </div>
+  <div class="prod-grid" id="homeProducts"></div>
+</div>
+
+<!-- BUY PAGE -->
+<div class="page" id="pg_buy">
+  <div class="sec-title">
+    Buy Wholesale
+    <span class="sec-sub">Min 10 kg</span>
+  </div>
+  <div class="prod-grid" id="buyProducts"></div>
+</div>
+
+<!-- SELL PAGE -->
+<div class="page" id="pg_sell">
+  <div class="sell-card">
+    <h3>अपना सामान बेचें</h3>
+    <p class="sub">Min 10 kg • Rate WhatsApp pe decide hoga</p>
+
+    <div class="form-field">
+      <label>PRODUCT</label>
+      <select id="sellProduct">
+        <option value="मखाना">मखाना (Makhana)</option>
+        <option value="मखाना (भुना)">मखाना भुना (Roasted)</option>
+        <option value="आम">आम (Mango)</option>
+        <option value="आम का पल्प">आम का पल्प (Mango Pulp)</option>
+        <option value="लीची">लीची (Litchi)</option>
+        <option value="मछली">मछली (Fish)</option>
+        <option value="चाय पत्ती">चाय पत्ती (Tea Leaves)</option>
+        <option value="काली मिर्च">काली मिर्च (Black Pepper)</option>
+        <option value="Other">Other (Specify in WhatsApp)</option>
+      </select>
+    </div>
+
+    <div class="two-col">
+      <div class="form-field">
+        <label>QUANTITY (KG)</label>
+        <input type="number" id="sellQty" placeholder="Min 10" min="10" value="10">
+      </div>
+      <div class="form-field">
+        <label>YOUR CITY</label>
+        <input type="text" id="sellCity" placeholder="e.g. Delhi">
+      </div>
+    </div>
+
+    <div class="form-field">
+      <label>YOUR NAME</label>
+      <input type="text" id="sellName" placeholder="Aapka naam">
+    </div>
+
+    <div class="form-field">
+      <label>EXTRA DETAILS (Optional)</label>
+      <textarea id="sellNote" placeholder="Quality, variety, packaging etc."></textarea>
+    </div>
+
+    <button class="submit-btn" onclick="submitSell()">💬 WhatsApp pe Becho</button>
+  </div>
+</div>
+
+<!-- HOW PAGE -->
+<div class="page" id="pg_how">
+  <div class="sec-title">Kaise Kaam Karta Hai?</div>
+
+  <div class="step">
+    <div class="step-num">1</div>
+    <div class="step-text">
+      <h4>Product Choose Karo</h4>
+      <p>Buy ya Sell page pe jaake product select karo. Minimum 10 kg lagana zaroori hai.</p>
+    </div>
+  </div>
+  <div class="step">
+    <div class="step-num">2</div>
+    <div class="step-text">
+      <h4>WhatsApp pe Message</h4>
+      <p>Button dabate hi WhatsApp khulega with ready message. Quantity aur details already filled honge.</p>
+    </div>
+  </div>
+  <div class="step">
+    <div class="step-num">3</div>
+    <div class="step-text">
+      <h4>Rate Decide Karo</h4>
+      <p>Seller/Buyer se directly WhatsApp pe rate fix karo. Best wholesale rate milega.</p>
+    </div>
+  </div>
+  <div class="step">
+    <div class="step-num">4</div>
+    <div class="step-text">
+      <h4>Deal Final</h4>
+      <p>Payment aur delivery apas mein decide karo. All India possible hai.</p>
+    </div>
+  </div>
+
+  <div class="sell-card" style="margin-top:20px">
+    <h3 style="font-size:14px">📌 Important Rules</h3>
+    <p class="sub" style="margin-bottom:0;line-height:1.6">
+      • Minimum order: <strong style="color:var(--green)">10 kg</strong><br>
+      • Maximum: <strong style="color:var(--green)">No limit</strong><br>
+      • Rate: WhatsApp pe decide hoga<br>
+      • Delivery: All India<br>
+      • Sirf Wholesale — Retail nahi
+    </p>
+  </div>
+</div>
+
+<!-- PROFILE PAGE -->
+<div class="page" id="pg_profile">
+  <div class="profile-head">
+    <div class="profile-avatar" id="profAvatar">?</div>
+    <div>
+      <div class="profile-head-name" id="profHeadName">Guest User</div>
+      <div class="profile-head-sub" id="profHeadSub">Profile complete karo</div>
+    </div>
+  </div>
+
+  <div class="profile-stats">
+    <div class="pstat"><div class="n" id="statBuy">0</div><div class="l">Buy Requests</div></div>
+    <div class="pstat"><div class="n" id="statSell">0</div><div class="l">Sell Requests</div></div>
+    <div class="pstat"><div class="n" id="statTotal">0</div><div class="l">Total Deals</div></div>
+  </div>
+
+  <div class="sell-card">
+    <h3>Aapki Profile</h3>
+    <p class="sub">Ek baar save karo, har form me auto-fill hoga</p>
+
+    <div class="form-field">
+      <label>NAME</label>
+      <input type="text" id="profName" placeholder="Aapka naam">
+    </div>
+    <div class="two-col">
+      <div class="form-field">
+        <label>MOBILE NUMBER</label>
+        <input type="tel" id="profPhone" placeholder="10 digit number" maxlength="10">
+      </div>
+      <div class="form-field">
+        <label>CITY</label>
+        <input type="text" id="profCity" placeholder="e.g. Darbhanga">
+      </div>
+    </div>
+    <button class="submit-btn" onclick="saveProfile()">💾 Profile Save Karo</button>
+  </div>
+
+  <div class="sec-title" style="margin-top:20px">
+    Meri History
+    <span class="sec-sub" id="historyCount">0 requests</span>
+  </div>
+  <div id="historyList"></div>
+</div>
+
+<!-- NOTIFICATION PANEL -->
+<div class="notif-panel-overlay" id="notifOverlay" onclick="closeNotifPanel()"></div>
+<div class="notif-panel" id="notifPanel">
+  <div class="notif-panel-head">
+    <h3>🔔 Notifications</h3>
+    <div style="display:flex;align-items:center;gap:14px">
+      <span class="notif-clear" onclick="clearNotifications()">Clear All</span>
+      <span class="notif-close" onclick="closeNotifPanel()">✕</span>
+    </div>
+  </div>
+  <div class="notif-list" id="notifList"></div>
+</div>
+
+<!-- QUANTITY MODAL -->
+<div class="modal-overlay" id="qtyModal">
+  <div class="modal">
+    <h3 id="modalTitle">Product</h3>
+    <p class="sub" id="modalSub">Wholesale Buy</p>
+
+    <div class="qty-row">
+      <button class="qty-btn" onclick="changeQty(-5)">−</button>
+      <input class="qty-input" type="number" id="modalQty" value="10" min="10" oninput="validateQty()">
+      <button class="qty-btn" onclick="changeQty(5)">+</button>
+    </div>
+    <div class="moq-note">📦 Minimum 10 kg • No upper limit</div>
+
+    <div class="form-field">
+      <label>YOUR NAME (Optional)</label>
+      <input type="text" id="modalName" placeholder="Aapka naam">
+    </div>
+    <div class="form-field">
+      <label>YOUR CITY (Optional)</label>
+      <input type="text" id="modalCity" placeholder="e.g. Mumbai">
+    </div>
+
+    <button class="wa-btn" onclick="sendWhatsApp()">
+      <span>💬</span> WhatsApp pe Rate Maango
+    </button>
+    <button class="close-modal" onclick="closeModal()">Cancel</button>
+  </div>
+</div>
+
+<div class="toast" id="toast"></div>
+
+<script>
+// ========== CONFIG ==========
+// Yahan apna WhatsApp number daalo (country code ke saath, + ke bina)
+const WHATSAPP_NUMBER = "918089156724";
+
+// ========== PRODUCTS ==========
+const products = [
+  { id: 1, name: "मखाना", nameEn: "Makhana", emoji: "⚪", desc: "Best quality fox nuts" },
+  { id: 2, name: "मखाना (भुना)", nameEn: "Roasted Makhana", emoji: "🟡", desc: "Bhuna makhana" },
+  { id: 3, name: "आम", nameEn: "Mango", emoji: "🥭", desc: "Seasonal fresh mango" },
+  { id: 4, name: "आम का पल्प", nameEn: "Mango Pulp", emoji: "🥣", desc: "Fresh pure pulp" },
+  { id: 5, name: "लीची", nameEn: "Litchi", emoji: "🔴", desc: "Fresh litchi" },
+  { id: 6, name: "मछली", nameEn: "Fish", emoji: "🐟", desc: "Fresh fish wholesale" },
+  { id: 7, name: "चाय पत्ती", nameEn: "Tea Leaves", emoji: "🍃", desc: "Premium tea leaves" },
+  { id: 8, name: "काली मिर्च", nameEn: "Black Pepper", emoji: "⚫", desc: "Best quality kali mirch" },
+];
+
+let currentProduct = null;
+let currentAction = "buy"; // buy or sell
+
+// ========== RENDER PRODUCTS ==========
+function renderProducts(containerId) {
+  const container = document.getElementById(containerId);
+  container.innerHTML = products.map(p => `
+    <div class="prod-card">
+      <div class="prod-img">
+        ${p.emoji}
+        <span class="moq-badge">MIN 10KG</span>
+      </div>
+      <div class="prod-body">
+        <div class="prod-name">${p.name}</div>
+        <div class="prod-desc">${p.desc}</div>
+        <div class="prod-actions">
+          <button class="btn-buy" onclick="openModal('${p.name}', 'buy')">🛒 Buy</button>
+          <button class="btn-sell" onclick="openModal('${p.name}', 'sell')">💰 Sell</button>
+        </div>
+      </div>
+    </div>
+  `).join("");
+}
+
+// ========== TABS ==========
+function goTab(tab) {
+  document.querySelectorAll(".page").forEach(p => p.classList.remove("active"));
+  document.querySelectorAll(".nav-tab").forEach(t => t.classList.remove("active"));
+  document.getElementById("pg_" + tab).classList.add("active");
+  document.getElementById("nt_" + tab).classList.add("active");
+  window.scrollTo({ top: 0, behavior: "smooth" });
+  if (tab === "profile") renderProfilePage();
+  if (tab === "sell") {
+    const prof = getProfile();
+    if (prof.name && !document.getElementById("sellName").value) document.getElementById("sellName").value = prof.name;
+    if (prof.city && !document.getElementById("sellCity").value) document.getElementById("sellCity").value = prof.city;
+  }
+}
+
+// ========== MODAL ==========
+function openModal(productName, action) {
+  currentProduct = productName;
+  currentAction = action;
+  document.getElementById("modalTitle").textContent = productName;
+  document.getElementById("modalSub").textContent = action === "buy" ? "Wholesale Buy • Rate on WhatsApp" : "Wholesale Sell • Rate on WhatsApp";
+  document.getElementById("modalQty").value = 10;
+  const prof = getProfile();
+  document.getElementById("modalName").value = prof.name || "";
+  document.getElementById("modalCity").value = prof.city || "";
+  document.getElementById("qtyModal").classList.add("show");
+}
+
+function closeModal() {
+  document.getElementById("qtyModal").classList.remove("show");
+}
+
+function changeQty(delta) {
+  const input = document.getElementById("modalQty");
+  let val = parseInt(input.value) || 10;
+  val = Math.max(10, val + delta);
+  input.value = val;
+}
+
+function validateQty() {
+  const input = document.getElementById("modalQty");
+  if (parseInt(input.value) < 10) input.value = 10;
+}
+
+// ========== WHATSAPP ==========
+function sendWhatsApp() {
+  const qty = parseInt(document.getElementById("modalQty").value) || 10;
+  if (qty < 10) {
+    showToast("Minimum 10 kg lagana zaroori hai!");
+    return;
+  }
+  const name = document.getElementById("modalName").value.trim();
+  const city = document.getElementById("modalCity").value.trim();
+
+  let msg = "";
+  if (currentAction === "buy") {
+    msg = `Namaste Desi Bazar!%0A%0AMain *${currentProduct}* kharidna chahta/chahti hoon.%0A%0A📦 Quantity: *${qty} kg*%0A`;
+  } else {
+    msg = `Namaste Desi Bazar!%0A%0AMere paas *${currentProduct}* bechne ke liye hai.%0A%0A📦 Quantity: *${qty} kg*%0A`;
+  }
+  if (name) msg += `👤 Name: ${name}%0A`;
+  if (city) msg += `📍 City: ${city}%0A`;
+  msg += `%0ARate bataiye please.`;
+
+  const url = `https://wa.me/${WHATSAPP_NUMBER}?text=${msg}`;
+  window.open(url, "_blank");
+  addHistory(currentAction, currentProduct, qty, city, name);
+  addNotification(
+    currentAction === "buy" ? "🛒" : "💰",
+    currentAction === "buy" ? "Buy Request Bheja Gaya" : "Sell Request Bheja Gaya",
+    `${currentProduct} • ${qty} kg${city ? " • " + city : ""}`
+  );
+  closeModal();
+  showToast("WhatsApp khul raha hai...");
+}
+
+function submitSell() {
+  const product = document.getElementById("sellProduct").value;
+  const qty = parseInt(document.getElementById("sellQty").value) || 0;
+  const city = document.getElementById("sellCity").value.trim();
+  const name = document.getElementById("sellName").value.trim();
+  const note = document.getElementById("sellNote").value.trim();
+
+  if (qty < 10) {
+    showToast("Minimum 10 kg lagana zaroori hai!");
+    return;
+  }
+  if (!name) {
+    showToast("Apna naam zaroor daalein!");
+    return;
+  }
+
+  let msg = `Namaste Desi Bazar!%0A%0AMain apna saaman bechna chahta/chahti hoon.%0A%0A`;
+  msg += `📦 Product: *${product}*%0A`;
+  msg += `⚖️ Quantity: *${qty} kg*%0A`;
+  if (city) msg += `📍 City: ${city}%0A`;
+  msg += `👤 Name: ${name}%0A`;
+  if (note) msg += `📝 Details: ${note}%0A`;
+  msg += `%0ARate discuss karte hain.`;
+
+  const url = `https://wa.me/${WHATSAPP_NUMBER}?text=${msg}`;
+  window.open(url, "_blank");
+  addHistory("sell", product, qty, city, name);
+  addNotification("💰", "Sell Request Bheja Gaya", `${product} • ${qty} kg${city ? " • " + city : ""}`);
+  showToast("WhatsApp khul raha hai...");
+}
+
+// ========== PROFILE ==========
+function getProfile() {
+  try { return JSON.parse(localStorage.getItem("db_profile")) || {}; }
+  catch (e) { return {}; }
+}
+
+function saveProfile() {
+  const name = document.getElementById("profName").value.trim();
+  const phone = document.getElementById("profPhone").value.trim();
+  const city = document.getElementById("profCity").value.trim();
+
+  if (!name) { showToast("Naam zaroor daalein!"); return; }
+  if (phone && !/^\d{10}$/.test(phone)) { showToast("10 digit sahi mobile number daalein!"); return; }
+
+  const profile = { name, phone, city };
+  localStorage.setItem("db_profile", JSON.stringify(profile));
+  renderProfilePage();
+  addNotification("👤", "Profile Update Hui", `${name} ki profile save ho gayi`);
+  showToast("Profile save ho gayi!");
+}
+
+function renderProfilePage() {
+  const prof = getProfile();
+  document.getElementById("profName").value = prof.name || "";
+  document.getElementById("profPhone").value = prof.phone || "";
+  document.getElementById("profCity").value = prof.city || "";
+
+  document.getElementById("profHeadName").textContent = prof.name || "Guest User";
+  document.getElementById("profHeadSub").textContent = prof.name
+    ? [prof.city, prof.phone].filter(Boolean).join(" • ") || "Wholesale Buyer/Seller"
+    : "Profile complete karo";
+  document.getElementById("profAvatar").textContent = prof.name ? prof.name.trim()[0].toUpperCase() : "?";
+
+  const history = getHistory();
+  const buyCount = history.filter(h => h.type === "buy").length;
+  const sellCount = history.filter(h => h.type === "sell").length;
+  document.getElementById("statBuy").textContent = buyCount;
+  document.getElementById("statSell").textContent = sellCount;
+  document.getElementById("statTotal").textContent = history.length;
+  document.getElementById("historyCount").textContent = history.length + " requests";
+
+  const list = document.getElementById("historyList");
+  if (!history.length) {
+    list.innerHTML = `<div class="notif-empty">Abhi tak koi buy/sell request nahi. Buy ya Sell tab se shuru karo!</div>`;
+    return;
+  }
+  list.innerHTML = history.slice().reverse().map(h => `
+    <div class="history-item">
+      <span class="history-tag ${h.type}">${h.type === "buy" ? "BUY" : "SELL"}</span>
+      <div class="history-info">
+        <div class="history-name">${h.product} • ${h.qty} kg</div>
+        <div class="history-meta">${[h.city, timeAgo(h.time)].filter(Boolean).join(" • ")}</div>
+      </div>
+    </div>
+  `).join("");
+}
+
+// ========== HISTORY ==========
+function getHistory() {
+  try { return JSON.parse(localStorage.getItem("db_history")) || []; }
+  catch (e) { return []; }
+}
+
+function addHistory(type, product, qty, city, name) {
+  const history = getHistory();
+  history.push({ type, product, qty, city, name, time: Date.now() });
+  localStorage.setItem("db_history", JSON.stringify(history));
+}
+
+// ========== NOTIFICATIONS ==========
+function getNotifications() {
+  try { return JSON.parse(localStorage.getItem("db_notifications")) || []; }
+  catch (e) { return []; }
+}
+
+function addNotification(icon, title, text) {
+  const notifs = getNotifications();
+  notifs.push({ icon, title, text, time: Date.now(), read: false });
+  localStorage.setItem("db_notifications", JSON.stringify(notifs));
+  updateNotifBadge();
+  const bell = document.getElementById("notifBell");
+  bell.classList.remove("ring");
+  void bell.offsetWidth;
+  bell.classList.add("ring");
+}
+
+function updateNotifBadge() {
+  const unread = getNotifications().filter(n => !n.read).length;
+  const badge = document.getElementById("notifBadge");
+  badge.textContent = unread > 9 ? "9+" : unread;
+  badge.classList.toggle("show", unread > 0);
+}
+
+function renderNotifList() {
+  const notifs = getNotifications();
+  const list = document.getElementById("notifList");
+  if (!notifs.length) {
+    list.innerHTML = `<div class="notif-empty">Koi notification nahi hai abhi</div>`;
+    return;
+  }
+  list.innerHTML = notifs.slice().reverse().map(n => `
+    <div class="notif-item ${n.read ? "" : "unread"}">
+      <div class="notif-icon">${n.icon}</div>
+      <div class="notif-body">
+        <div class="notif-title">${n.title}</div>
+        <div class="notif-text">${n.text}</div>
+        <div class="notif-time">${timeAgo(n.time)}</div>
+      </div>
+    </div>
+  `).join("");
+}
+
+function openNotifPanel() {
+  renderNotifList();
+  document.getElementById("notifPanel").classList.add("show");
+  document.getElementById("notifOverlay").classList.add("show");
+  const notifs = getNotifications().map(n => ({ ...n, read: true }));
+  localStorage.setItem("db_notifications", JSON.stringify(notifs));
+  updateNotifBadge();
+}
+
+function closeNotifPanel() {
+  document.getElementById("notifPanel").classList.remove("show");
+  document.getElementById("notifOverlay").classList.remove("show");
+}
+
+function clearNotifications() {
+  localStorage.setItem("db_notifications", JSON.stringify([]));
+  renderNotifList();
+  updateNotifBadge();
+}
+
+function timeAgo(ts) {
+  if (!ts) return "";
+  const diff = Math.floor((Date.now() - ts) / 1000);
+  if (diff < 60) return "abhi";
+  if (diff < 3600) return Math.floor(diff / 60) + " min pehle";
+  if (diff < 86400) return Math.floor(diff / 3600) + " ghante pehle";
+  return Math.floor(diff / 86400) + " din pehle";
+}
+
+// ========== TOAST ==========
+function showToast(msg) {
+  const t = document.getElementById("toast");
+  t.textContent = msg;
+  t.classList.add("show");
+  setTimeout(() => t.classList.remove("show"), 2500);
+}
+
+// ========== INIT ==========
+renderProducts("homeProducts");
+renderProducts("buyProducts");
+renderProfilePage();
+updateNotifBadge();
+
+// Close modal on outside click
+document.getElementById("qtyModal").addEventListener("click", function(e) {
+  if (e.target === this) closeModal();
+});
+</script>
+</body>
+</html>
