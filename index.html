@@ -1,0 +1,660 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Desi Bazar App</title>
+  <style>
+    :root{
+      --bg:#f8f3ee;
+      --card:#fffaf5;
+      --paper:#ffffff;
+      --primary:#f59e0b;
+      --primary-2:#eb8d00;
+      --green:#166534;
+      --green-soft:#ebfff2;
+      --text:#1b1a1a;
+      --muted:#6b7280;
+      --line:#f0e5d9;
+      --red:#a52a2a;
+      --shadow:0 18px 28px rgba(0,0,0,0.08);
+    }
+
+    *{box-sizing:border-box}
+    html,body{
+      margin:0;
+      height:100%;
+      font-family: Arial, Helvetica, sans-serif;
+      background:linear-gradient(180deg, #faf3ea 0%, #fffdfb 100%);
+      color:var(--text);
+    }
+
+    body{
+      display:flex;
+      justify-content:center;
+      align-items:flex-start;
+      padding:20px;
+    }
+
+    .phone{
+      width:100%;
+      max-width:430px;
+      min-height:900px;
+      background:linear-gradient(180deg,#fffdf9 0%, #fffaf2 100%);
+      border-radius:36px;
+      border:1px solid rgba(0,0,0,0.05);
+      box-shadow:0 30px 60px rgba(20,20,20,0.12);
+      overflow:hidden;
+      position:relative;
+    }
+
+    .statusbar{
+      height:58px;
+      padding:18px 22px 0;
+      display:flex;
+      justify-content:space-between;
+      font-size:13px;
+      font-weight:700;
+      background:rgba(255,255,255,0.15);
+      color:#161616;
+    }
+
+    .top-header{
+      background:linear-gradient(135deg, #fffaf2 0%, #fff3cf 100%);
+      padding:12px 18px 14px;
+      border-bottom:1px solid var(--line);
+    }
+
+    .head-row{
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      margin-bottom:14px;
+    }
+
+    .brand{
+      display:flex;
+      align-items:center;
+      gap:10px;
+      font-weight:800;
+      letter-spacing:-0.04em;
+    }
+
+    .brand-badge{
+      width:38px;
+      height:38px;
+      display:grid;
+      place-items:center;
+      border-radius:12px;
+      color:#fff;
+      font-weight:900;
+      background:linear-gradient(135deg, var(--primary), #ff9b3d);
+      box-shadow:0 10px 18px rgba(245,158,11,0.25);
+    }
+
+    .cart-btn{
+      width:38px;
+      height:38px;
+      display:grid;
+      place-items:center;
+      border-radius:12px;
+      border:1px solid var(--line);
+      background:rgba(255,255,255,0.7);
+      font-size:18px;
+      box-shadow:0 8px 18px rgba(0,0,0,0.03);
+    }
+
+    .search{
+      background:rgba(255,255,255,0.76);
+      border:1px solid var(--line);
+      border-radius:16px;
+      padding:12px 14px;
+      display:flex;
+      align-items:center;
+      gap:10px;
+      color:var(--muted);
+      box-shadow:0 8px 16px rgba(0,0,0,0.02);
+    }
+
+    .search input{
+      border:none;
+      outline:none;
+      background:transparent;
+      width:100%;
+      font-size:14px;
+      color:var(--text);
+    }
+
+    .hero{
+      padding:18px 18px 0;
+    }
+
+    .hero-card{
+      background:linear-gradient(135deg,#fef3d8 0%,#e7f9ed 60%,#fff8ec 100%);
+      border-radius:28px;
+      padding:18px 16px 16px;
+      border:1px solid rgba(0,0,0,0.04);
+      position:relative;
+      overflow:hidden;
+    }
+
+    .promo-tag{
+      position:absolute;
+      right:18px;
+      top:12px;
+      background:rgba(255,255,255,0.75);
+      border:1px solid rgba(255,255,255,0.5);
+      border-radius:14px;
+      padding:10px 12px;
+      box-shadow:0 12px 20px rgba(0,0,0,0.06);
+    }
+
+    .promo-tag small{
+      display:block;
+      color:var(--muted);
+      font-size:9px;
+      text-transform:uppercase;
+    }
+
+    .promo-tag strong{
+      display:block;
+      font-size:20px;
+      color:var(--red);
+      letter-spacing:-0.05em;
+    }
+
+    .hero-badge{
+      display:inline-block;
+      background:rgba(22,101,52,0.09);
+      color:var(--green);
+      padding:7px 10px;
+      border-radius:999px;
+      font-size:10px;
+      font-weight:800;
+      letter-spacing:0.08em;
+      text-transform:uppercase;
+      margin-bottom:8px;
+    }
+
+    .hero h1{
+      margin:0 0 8px;
+      font-size:2.4rem;
+      letter-spacing:-0.07em;
+      line-height:0.95;
+      max-width:210px;
+    }
+
+    .hero p{
+      margin:0 0 18px;
+      color:var(--muted);
+      font-size:14px;
+      line-height:1.6;
+      max-width:240px;
+    }
+
+    .hero-actions{
+      display:flex;
+      gap:10px;
+      margin-bottom:12px;
+    }
+
+    .btn{
+      border:none;
+      border-radius:14px;
+      padding:12px 15px;
+      font-weight:800;
+      letter-spacing:-0.03em;
+      cursor:pointer;
+    }
+
+    .btn-primary{
+      flex:1;
+      background:linear-gradient(135deg, var(--primary), var(--primary-2));
+      color:#fff;
+      box-shadow:0 12px 20px rgba(245,158,11,0.25);
+    }
+
+    .btn-secondary{
+      flex:1;
+      background:rgba(255,255,255,0.7);
+      color:var(--text);
+      border:1px solid var(--line);
+    }
+
+    .mini-stats{
+      display:grid;
+      grid-template-columns:repeat(3,1fr);
+      gap:10px;
+      margin-top:12px;
+    }
+
+    .mini-box{
+      background:rgba(255,255,255,0.38);
+      border:1px solid rgba(0,0,0,0.04);
+      border-radius:16px;
+      text-align:center;
+      padding:10px 8px;
+    }
+
+    .mini-box .emoji{
+      display:block;
+      font-size:20px;
+      margin-bottom:4px;
+    }
+
+    .mini-box strong{
+      font-size:11px;
+      display:block;
+      color:var(--text);
+    }
+
+    .section{
+      padding:22px 18px 0;
+    }
+
+    .sec-head{
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+      margin-bottom:12px;
+    }
+
+    .sec-head h3{
+      margin:0;
+      font-size:18px;
+      letter-spacing:-0.04em;
+    }
+
+    .link{
+      color:var(--green);
+      font-size:12px;
+      font-weight:800;
+    }
+
+    .cat-row{
+      display:flex;
+      gap:10px;
+      overflow-x:auto;
+      padding-bottom:5px;
+      scrollbar-width:none;
+    }
+
+    .cat-row::-webkit-scrollbar{display:none}
+
+    .cat-item{
+      min-width:92px;
+      background:#fff;
+      border:1px solid var(--line);
+      border-radius:18px;
+      padding:12px 8px 10px;
+      text-align:center;
+      box-shadow:0 10px 18px rgba(0,0,0,0.02);
+    }
+
+    .cat-item .icon{
+      width:48px;
+      height:48px;
+      margin:0 auto 8px;
+      border-radius:16px;
+      display:grid;
+      place-items:center;
+      background:linear-gradient(135deg, #fff7ed, #ecfdf5);
+      font-size:22px;
+    }
+
+    .cat-item .name{
+      font-size:12px;
+      font-weight:800;
+      color:var(--text);
+    }
+
+    .product-grid{
+      display:grid;
+      grid-template-columns:repeat(2, minmax(0,1fr));
+      gap:12px;
+      padding-bottom:110px;
+    }
+
+    .product-card{
+      background:#fff;
+      border:1px solid var(--line);
+      border-radius:22px;
+      overflow:hidden;
+      box-shadow:0 12px 16px rgba(0,0,0,0.03);
+    }
+
+    .product-image{
+      height:170px;
+      position:relative;
+      overflow:hidden;
+      background:#f5f5f5;
+    }
+
+    .product-image img{
+      width:100%;
+      height:100%;
+      object-fit:cover;
+      display:block;
+    }
+
+    .product-badge{
+      position:absolute;
+      top:10px;
+      left:10px;
+      padding:6px 8px;
+      border-radius:999px;
+      background:rgba(22,101,52,0.9);
+      color:#fff;
+      font-size:9px;
+      font-weight:800;
+    }
+
+    .product-body{
+      padding:12px;
+    }
+
+    .meta{
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+      font-size:10px;
+      color:var(--muted);
+      margin-bottom:8px;
+    }
+
+    .meta .rating{
+      color:#f59e0b;
+      font-weight:800;
+      font-size:11px;
+    }
+
+    .product-name{
+      margin:0 0 10px;
+      font-size:14px;
+      line-height:1.35;
+      letter-spacing:-0.03em;
+      min-height:38px;
+    }
+
+    .price-row{
+      display:flex;
+      justify-content:space-between;
+      align-items:flex-end;
+      gap:8px;
+    }
+
+    .price-block{
+      display:flex;
+      flex-direction:column;
+      gap:2px;
+    }
+
+    .price{
+      font-size:18px;
+      font-weight:800;
+      color:var(--red);
+      letter-spacing:-0.05em;
+    }
+
+    .old{
+      font-size:10px;
+      color:var(--muted);
+      text-decoration:line-through;
+    }
+
+    .add{
+      width:34px;
+      height:34px;
+      border:none;
+      border-radius:10px;
+      font-size:20px;
+      color:#fff;
+      background:linear-gradient(135deg, var(--primary), var(--primary-2));
+      box-shadow:0 10px 16px rgba(245,158,11,0.28);
+    }
+
+    .bottom-nav{
+      position:absolute;
+      left:0;
+      right:0;
+      bottom:0;
+      background:rgba(255,255,255,0.92);
+      backdrop-filter:blur(12px);
+      border-top:1px solid var(--line);
+      padding:10px 18px 18px;
+      display:grid;
+      grid-template-columns: repeat(4,1fr);
+      gap:8px;
+    }
+
+    .nav-item{
+      text-align:center;
+      color:var(--muted);
+      font-size:11px;
+      font-weight:800;
+      padding:8px 4px 6px;
+      border-radius:12px;
+    }
+
+    .nav-item.active{
+      background:#fff7ea;
+      color:var(--primary-2);
+    }
+
+    .nav-item .emoji{
+      display:block;
+      font-size:20px;
+      margin-bottom:3px;
+    }
+
+    @media (max-width:420px){
+      body{
+        padding:0;
+      }
+      .phone{
+        border-radius:0;
+        max-width:100%;
+        min-height:100vh;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="phone">
+    <div class="statusbar">
+      <span>9:41</span>
+      <span>◉◉◉</span>
+    </div>
+
+    <header class="top-header">
+      <div class="head-row">
+        <div class="brand">
+          <div class="brand-badge">DB</div>
+          <span>Desi Bazar</span>
+        </div>
+        <button class="cart-btn">🛒</button>
+      </div>
+
+      <div class="search">
+        <span>🔍</span>
+        <input type="text" value="Search products..." />
+      </div>
+    </header>
+
+    <section class="hero">
+      <div class="hero-card">
+        <div class="promo-tag">
+          <small>Offer</small>
+          <strong>50% Off</strong>
+        </div>
+
+        <div class="hero-badge">Fresh & Authentic</div>
+        <h1>Bring home tradition.</h1>
+        <p>Handpicked fashion, decor, groceries and gifts from every corner of India.</p>
+
+        <div class="hero-actions">
+          <button class="btn btn-primary">Shop Now</button>
+          <button class="btn btn-secondary">Explore</button>
+        </div>
+
+        <div class="mini-stats">
+          <div class="mini-box">
+            <span class="emoji">👗</span>
+            <strong>Fashion</strong>
+          </div>
+          <div class="mini-box">
+            <span class="emoji">🪴</span>
+            <strong>Decor</strong>
+          </div>
+          <div class="mini-box">
+            <span class="emoji">🍛</span>
+            <strong>Groceries</strong>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="sec-head">
+        <h3>Categories</h3>
+        <span class="link">View all</span>
+      </div>
+
+      <div class="cat-row">
+        <div class="cat-item">
+          <div class="icon">👗</div>
+          <div class="name">Women</div>
+        </div>
+        <div class="cat-item">
+          <div class="icon">🧣</div>
+          <div class="name">Ethnic</div>
+        </div>
+        <div class="cat-item">
+          <div class="icon">🏺</div>
+          <div class="name">Decor</div>
+        </div>
+        <div class="cat-item">
+          <div class="icon">🍲</div>
+          <div class="name">Kitchen</div>
+        </div>
+        <div class="cat-item">
+          <div class="icon">🎁</div>
+          <div class="name">Gifts</div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="sec-head">
+        <h3>Popular Items</h3>
+        <span class="link">See more</span>
+      </div>
+
+      <div class="product-grid">
+        <article class="product-card">
+          <div class="product-image">
+            <span class="product-badge">Best Seller</span>
+            <img src="https://images.unsplash.com/photo-1524504388940-b1c1722653e1?auto=format&fit=crop&w=800&q=80" alt="Silk saree"/>
+          </div>
+          <div class="product-body">
+            <div class="meta">
+              <span>Traditional</span>
+              <span class="rating">★ 4.8</span>
+            </div>
+            <h4 class="product-name">Handwoven Silk Saree</h4>
+            <div class="price-row">
+              <div class="price-block">
+                <span class="price">₹2,499</span>
+                <span class="old">₹3,299</span>
+              </div>
+              <button class="add">+</button>
+            </div>
+          </div>
+        </article>
+
+        <article class="product-card">
+          <div class="product-image">
+            <span class="product-badge">New</span>
+            <img src="https://images.unsplash.com/photo-1512436991641-6745cdb1723f?auto=format&fit=crop&w=800&q=80" alt="Terracotta vase"/>
+          </div>
+          <div class="product-body">
+            <div class="meta">
+              <span>Home Decor</span>
+              <span class="rating">★ 4.9</span>
+            </div>
+            <h4 class="product-name">Terracotta Vase Set</h4>
+            <div class="price-row">
+              <div class="price-block">
+                <span class="price">₹1,199</span>
+                <span class="old">₹1,799</span>
+              </div>
+              <button class="add">+</button>
+            </div>
+          </div>
+        </article>
+
+        <article class="product-card">
+          <div class="product-image">
+            <span class="product-badge">Hot</span>
+            <img src="https://images.unsplash.com/photo-1601050690597-df0568f70950?auto=format&fit=crop&w=800&q=80" alt="Spice combo"/>
+          </div>
+          <div class="product-body">
+            <div class="meta">
+              <span>Groceries</span>
+              <span class="rating">★ 4.7</span>
+            </div>
+            <h4 class="product-name">Desi Spice Combo Pack</h4>
+            <div class="price-row">
+              <div class="price-block">
+                <span class="price">₹899</span>
+                <span class="old">₹1,199</span>
+              </div>
+              <button class="add">+</button>
+            </div>
+          </div>
+        </article>
+
+        <article class="product-card">
+          <div class="product-image">
+            <span class="product-badge">Gift</span>
+            <img src="https://images.unsplash.com/photo-1523170335258-f5ed11844a49?auto=format&fit=crop&w=800&q=80" alt="Gift box"/>
+          </div>
+          <div class="product-body">
+            <div class="meta">
+              <span>Festive</span>
+              <span class="rating">★ 5.0</span>
+            </div>
+            <h4 class="product-name">Heritage Gift Box</h4>
+            <div class="price-row">
+              <div class="price-block">
+                <span class="price">₹1,699</span>
+                <span class="old">₹2,199</span>
+              </div>
+              <button class="add">+</button>
+            </div>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <nav class="bottom-nav">
+      <div class="nav-item active">
+        <span class="emoji">🏠</span>
+        Home
+      </div>
+      <div class="nav-item">
+        <span class="emoji">📦</span>
+        Orders
+      </div>
+      <div class="nav-item">
+        <span class="emoji">❤</span>
+        Wishlist
+      </div>
+      <div class="nav-item">
+        <span class="emoji">👤</span>
+        Profile
+      </div>
+    </nav>
+  </div>
+</body>
+</html>
